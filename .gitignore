@@ -1,0 +1,17 @@
+# Ignore data and model artifacts
+__pycache__/
+*.pyc
+.DS_Store
+
+
+data/original/*
+data/processed/*
+!data/original/.gitkeep
+!data/processed/.gitkeep
+
+model_output/*
+!model_output/.gitkeep
+
+
+eda/plots/*
+!eda/plots/.gitkeep
