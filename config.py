@@ -5,3 +5,4 @@ class Config:
     test_size = 0.2
     random_seed = 42
     plot_path = "eda/plots"
+    preprocessed_data_path = "data/processed/"
