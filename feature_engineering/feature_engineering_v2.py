@@ -13,6 +13,10 @@ def engineer_features(df):
     original_len = len(df)
     logger.info(f"Original dataset length: {latest_len} rows")
 
+    df = df[df["FLIGHT_DIRECTION"] == "D"]
+    logger.info(f"Dropped {latest_len - len(df)} rows filtering for departures only.)")
+    latest_len = len(df)
+
     df.dropna(subset=["ACTUAL_TAKE_OFF_TIME_ATOT_UTC", "ACTUAL_OFFBLOCK_TIME_AOBT_UTC"], inplace=True)
     logger.info(f"Dropped {latest_len - len(df)} rows due to missing timestamps. (ACTUAL_TAKE_OFF_TIME_ATOT_UTC AND ACTUAL_OFFBLOCK_TIME_AOBT_UTC)")
     latest_len = len(df)
@@ -23,8 +27,8 @@ def engineer_features(df):
     df["TAXI_OUT_DURATION"] = (df["ACTUAL_TAKE_OFF_TIME_ATOT_UTC"] -
                                df["ACTUAL_OFFBLOCK_TIME_AOBT_UTC"]).dt.total_seconds() / 60
 
-    df = df[(df["TAXI_OUT_DURATION"] >= 2) & (df["TAXI_OUT_DURATION"] <= 45)]
-    logger.info(f"Dropped {latest_len - len(df)} rows outside 2–45 min taxi duration range.")
+    df = df[(df["TAXI_OUT_DURATION"] >= 10) & (df["TAXI_OUT_DURATION"] <= 25)]
+    logger.info(f"Dropped {latest_len - len(df)} rows outside 10–25 min taxi duration range.")
     latest_len = len(df)
 
     df = compute_vectorized_traffic(df, "ACTUAL_OFFBLOCK_TIME_AOBT_UTC", 10)
@@ -49,15 +53,15 @@ def engineer_features(df):
     df["IS_PEAK_HOUR"] = df["HOUR"].apply(lambda h: 1 if (6 <= h <= 9) or (16 <= h <= 20) else 0)
 
     # Apply mapping
-    df['AIRCRAFT_CATEGORY'] = df['AIRCRAFT_TYPE_ICAO'].map(aircraft_category_map).fillna('M')
-    df['AIRCRAFT_CATEGORY'] = df['AIRCRAFT_CATEGORY'].astype('category')
+    #df['AIRCRAFT_CATEGORY'] = df['AIRCRAFT_TYPE_ICAO'].map(aircraft_category_map).fillna('M')
+    #df['AIRCRAFT_CATEGORY'] = df['AIRCRAFT_CATEGORY'].astype('category')
 
     logger.info(f"Total dropped rows: {original_len - latest_len} rows.")
     logger.info(f"Final dataset has {latest_len} rows.")
 
-    file_path = os.path.join(Config.preprocessed_data_path, "preprocessed_taxi_data.csv")
+    file_path = os.path.join(Config.preprocessed_data_path, "preprocessed_taxi_data_v2.csv")
     df.to_csv(file_path, index=False)
-    print("✅ Preprocessed data saved to 'mode/processed/preprocessed_taxi_data.csv'")
+    print("✅ Preprocessed data saved to 'mode/processed/preprocessed_taxi_data_v2.csv'")
 
     return df
 

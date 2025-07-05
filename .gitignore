@@ -5,13 +5,16 @@ __pycache__/
 
 
 data/original/*
-data/processed/*
 !data/original/.gitkeep
+
+data/processed/*
 !data/processed/.gitkeep
 
 model_output/*
 !model_output/.gitkeep
 
+eda/plots_v1/*
+!eda/plots_v1/.gitkeep
 
-eda/plots/*
-!eda/plots/.gitkeep
+eda/plots_v2/*
+!eda/plots_v2/.gitkeep

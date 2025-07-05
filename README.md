@@ -45,6 +45,8 @@ pip install -r requirements.txt
 Put your flight dataset CSV inside the `data/` folder.  
 Make sure the file name matches the one defined in `config.py`.
 
+(update):
+v1 is the first csv file shared in the WhatsApp group, v2 is the second csv file shared (shared on Friday 4-July)
 ### 4. Run the Full Pipeline
 
 ```bash
@@ -72,12 +74,23 @@ This will:
 
 ## 🔧 Example Output
 
+### v1:
 ```
 📊 Model Performance Metrics:
-Mean Absolute Error (MAE):       3.27 minutes
-Root Mean Squared Error (RMSE):  4.60 minutes
-Median Absolute Error:           2.42 minutes
-R² Score:                        0.3876
+Mean Absolute Error (MAE):		2.10 minutes
+Root Mean Squared Error (RMSE):	2.64 minutes
+Median Absolute Error:		1.75 minutes
+R² Score:				0.4428
+```
+
+### v2:
+```
+📊 Model Performance Metrics:
+Mean Absolute Error (MAE):		2.13 minutes
+Root Mean Squared Error (RMSE):	2.67 minutes
+Median Absolute Error:		1.78 minutes
+R² Score:				0.4019
+
 ```
 
 ---

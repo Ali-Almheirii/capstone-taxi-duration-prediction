@@ -1,5 +1,4 @@
 import os
-import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from data_loader import load_data
@@ -8,10 +7,10 @@ from config import Config
 # Setup
 sns.set(style="whitegrid")
 
-os.makedirs(Config.plot_path, exist_ok=True)
+os.makedirs(Config.plot_path_v2, exist_ok=True)
 
 def save_plot(fig, filename):
-    path = os.path.join(Config.plot_path, filename)
+    path = os.path.join(Config.plot_path_v2, filename)
     fig.savefig(path, bbox_inches="tight")
     print(f"✅ Saved plot: {path}")
 
@@ -25,10 +24,10 @@ def run_eda(df):
     save_plot(fig, "taxi_out_distribution.png")
 
     # 2. Boxplot by Aircraft Category
-    fig, ax = plt.subplots()
-    sns.boxplot(x="AIRCRAFT_CATEGORY", y="TAXI_OUT_DURATION", data=df, ax=ax)
-    ax.set_title("Taxi Duration by Aircraft Category")
-    save_plot(fig, "boxplot_aircraft_category.png")
+    #fig, ax = plt.subplots()
+    #sns.boxplot(x="AIRCRAFT_CATEGORY", y="TAXI_OUT_DURATION", data=df, ax=ax)
+    #ax.set_title("Taxi Duration by Aircraft Category")
+    #save_plot(fig, "boxplot_aircraft_category.png")
 
     # 3. Taxi Duration by Hour
     fig, ax = plt.subplots()
@@ -57,12 +56,11 @@ def run_eda(df):
         ax.set_title(f"{col} vs Taxi-Out Duration")
         save_plot(fig, f"scatter_{col.lower()}.png")
 
-    print("🎉 EDA complete. All plots saved to eda/plots/\n")
+    print("🎉 EDA complete. All plots_v1 saved to eda/plots_v1/\n")
 
 if __name__ == "__main__":
-    from config import Config
-    from feature_engineering import engineer_features
+    from feature_engineering.feature_engineering_v2 import engineer_features as engineer_features_v2
 
-    df = load_data(Config.data_path)
-    df = engineer_features(df)
+    df = load_data(Config.data_path_v2)
+    df = engineer_features_v2(df)
     run_eda(df)
