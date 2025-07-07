@@ -56,7 +56,11 @@ def run_eda(df):
         ax.set_title(f"{col} vs Taxi-Out Duration")
         save_plot(fig, f"scatter_{col.lower()}.png")
 
-    print("🎉 EDA complete. All plots_v1 saved to eda/plots_v1/\n")
+    print("🎉 EDA complete. All plots_v1 saved to eda/plots_v2/\n")
+
+    file_path = os.path.join(Config.preprocessed_data_path, "preprocessed_taxi_data_v2.csv")
+    df.to_csv(file_path, index=False)
+    print("✅ Preprocessed data saved to 'mode/processed/preprocessed_taxi_data_v2.csv'")
 
 if __name__ == "__main__":
     from feature_engineering.feature_engineering_v2 import engineer_features as engineer_features_v2

@@ -16,7 +16,11 @@ def train_and_evaluate(df):
         "FLIGHT_DIRECTION",
         "TRAFFIC_LAST_30_MIN", "TRAFFIC_TO_SAME_RUNWAY_LAST_30_MIN", "TRAFFIC_IN_TERMINAL_LAST_30_MIN",
         "AIRCRAFT_CATEGORY",
-        "IS_PEAK_HOUR"
+        "IS_PEAK_HOUR",
+
+        # Weather data
+        "temperature_2m", "wind_gusts_10m", "relative_humidity_2m", "precipitation", "wind_speed_10m", "weather_code",
+        "cloud_cover", "surface_pressure"
     ]
     df = df.dropna(subset=features)
     X = df[features].copy()
@@ -65,7 +69,7 @@ def train_and_evaluate(df):
     plt.tight_layout()
     plt.show()
 
-    print("\n\n📊 Model Performance Metrics:")
+    print("\n\n📊 Model Performance Metrics: v1")
     print(f"Mean Absolute Error (MAE):\t\t{mean_absolute_error(y_val, preds):.2f} minutes")
     print(f"Root Mean Squared Error (RMSE):\t{np.sqrt(mean_squared_error(y_val, preds)):.2f} minutes")
     print(f"Median Absolute Error:\t\t{median_absolute_error(y_val, preds):.2f} minutes")

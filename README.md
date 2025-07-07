@@ -81,21 +81,20 @@ This will:
 
 ### v1:
 ```
-📊 Model Performance Metrics:
-Mean Absolute Error (MAE):		2.10 minutes
-Root Mean Squared Error (RMSE):	2.64 minutes
-Median Absolute Error:		1.75 minutes
-R² Score:				0.4428
+📊 Model Performance Metrics: v1
+Mean Absolute Error (MAE):		2.05 minutes
+Root Mean Squared Error (RMSE):	2.59 minutes
+Median Absolute Error:		1.72 minutes
+R² Score:				0.4635
 ```
 
 ### v2:
 ```
-📊 Model Performance Metrics:
-Mean Absolute Error (MAE):		2.13 minutes
-Root Mean Squared Error (RMSE):	2.67 minutes
-Median Absolute Error:		1.78 minutes
-R² Score:				0.4019
-
+📊 Model Performance Metrics: v2
+Mean Absolute Error (MAE):		2.08 minutes
+Root Mean Squared Error (RMSE):	2.62 minutes
+Median Absolute Error:		1.76 minutes
+R² Score:				0.4275
 ```
 
 ---

@@ -10,7 +10,7 @@ class Config:
 
     preprocessed_data_path = "data/processed/"
 
-    optuna_trials = 25
+    optuna_trials = 30
     test_size = 0.2
     random_seed = 42
 

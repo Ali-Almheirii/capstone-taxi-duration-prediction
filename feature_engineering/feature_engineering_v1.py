@@ -1,9 +1,9 @@
-import pandas as pd
-import numpy as np
-from aircraft_category_map import aircraft_category_map
 import logging
-from config import Config
-import os
+
+import numpy as np
+import pandas as pd
+
+from aircraft_category_map import aircraft_category_map
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -58,10 +58,6 @@ def engineer_features(df):
 
     logger.info(f"Total dropped rows: {original_len - latest_len} rows.")
     logger.info(f"Final dataset has {latest_len} rows.")
-
-    file_path = os.path.join(Config.preprocessed_data_path, "preprocessed_taxi_data_v1.csv")
-    df.to_csv(file_path, index=False)
-    print("✅ Preprocessed data saved to 'mode/processed/preprocessed_taxi_data_v1.csv'")
 
     return df
 

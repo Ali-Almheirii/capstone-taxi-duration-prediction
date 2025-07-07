@@ -6,6 +6,8 @@ from model.model_v2 import train_and_evaluate as train_and_evaluate_v2
 from model.model_v1 import train_and_evaluate as train_and_evaluate_v1
 from eda.eda_v2 import run_eda as run_eda_v2
 from eda.eda_v1 import run_eda as run_eda_v1
+from utils.weather_fetcher import fetch_weather_data
+from mappers.weather_mapper import map_weather_to_flights
 
 def main(version="v1"):
 
@@ -26,6 +28,9 @@ def main(version="v1"):
 
     df = load_data(data_path)
     df = engineer_features(df)
+
+    weather_df = fetch_weather_data()
+    df = map_weather_to_flights(df, weather_df)
 
     run_eda(df)  # Optional: comment out if EDA is not needed
     train_and_evaluate(df)
