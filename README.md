@@ -7,7 +7,12 @@ Built as a capstone project, it leverages XGBoost (model), Optuna (for hyperpara
 and extensive feature engineering.
 
 ---
+## Next Steps:
+- Try out other models such as: CatBoost, LightGBM, Stacking Model.
+- Last resort try: MLP with embeddings OR Embedding + Deep Learning
 
+- Note: Furhter enhancing feature engineering OR preprocessing pipeline is always a good idea.
+---
 ## 📂 Project Structure
 
 ```
@@ -62,7 +67,7 @@ This will:
 
 ---
 
-## 📈 Features Used
+## 📈 Features Used (not updated)
 
 - Stand, runway, aircraft type
 - Time-of-day, day-of-week
